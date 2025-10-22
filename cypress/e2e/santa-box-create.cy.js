@@ -1,6 +1,7 @@
 const users = require("../fixtures/users.json")
 const loginPage = require("../fixtures/pages/loginPage.json")
 const boxPage = require("../fixtures/pages/boxPage.json")
+const generalElements = require("../fixtures/pages/jeneral.json")
 import {faker} from "@faker-js/faker"
 
 describe('user can create a box and run it', () => {
@@ -20,13 +21,16 @@ describe('user can create a box and run it', () => {
   //пользователь 1 логинится
   //пользователь 1 запускает жеребьевку
 
-  let newBoxName = faker.word({ length: { min: 5, max: 10 }})
+  let newBoxName = faker.word.noun({ length: { min: 5, max: 10 }})
 
   it('user logins and create a box', () => {
     cy.visit('/login')
+    cy.get(loginPage.loginField).type(users.userAutor.email)
     cy.get(loginPage.passwordField).type(users.userAutor.password)
     cy.get(loginPage.submitButton).click({forse: true})
-    cy.contains("Создать коробку").click()
+    
+    cy.contains("Создать коробку").click({forse: true})
     cy.get(boxPage.boxNameField).type(newBoxName)
+    cy.get(generalElements.arrowRight).click()
   })
 })
