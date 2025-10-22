@@ -1,0 +1,23 @@
+{
+  "name": "e2e-tests-santa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarinuIvanova/E2E-tests-Santa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarinuIvanova/E2E-tests-Santa/issues"
+  },
+  "homepage": "https://github.com/MarinuIvanova/E2E-tests-Santa#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "cypress": "^15.5.0"
+  }
+}

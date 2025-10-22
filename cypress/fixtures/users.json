@@ -1,0 +1,22 @@
+{
+  "userAutor": {
+    "email": "marinagubina37+1@gmail.com",
+    "password": "test12345",
+    "name": "Marina-autor"
+  },
+  "user1": {
+    "email": "marinagubina37+2@gmail.com",
+    "password": "test12345",
+    "name": "Marina1"
+  },
+  "user2": {
+    "email": "marinagubina37+3@gmail.com",
+    "password": "test12345",
+    "name": "Marina2"
+  },
+  "user3": {
+    "email": "marinagubina37+4@gmail.com",
+    "password": "test12345",
+    "name": "Marina3"
+  }
+}
