@@ -23,9 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const loginPage = require("../fixtures/pages/loginPage.json");
+const generalElements = require("../fixtures/pages/jeneral.json");
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-// returning false here prevents Cypress from
-// failing the test
-return false
-})
+Cypress.on("uncaught:exception", (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false;
+});
+
+Cypress.Commands.add("login", (userName, password) => {
+  cy.get(loginPage.loginField).type(userName);
+  cy.get(loginPage.passwordField).type(password);
+  cy.get(generalElements.submitButton).click({ forse: true });
+});
