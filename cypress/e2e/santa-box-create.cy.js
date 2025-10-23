@@ -3,6 +3,7 @@ const loginPage = require("../fixtures/pages/loginPage.json");
 const boxPage = require("../fixtures/pages/boxPage.json");
 const dashboardPage = require("../fixtures/pages/dashboardPage.json");
 const generalElements = require("../fixtures/pages/jeneral.json");
+const invitePage = require("../fixtures/pages/invitePage.json");
 import { faker } from "@faker-js/faker";
 
 describe("user can create a box and run it", () => {
@@ -27,12 +28,13 @@ describe("user can create a box and run it", () => {
   let minAmount = 10;
   let maxAmount = 50;
   let currency = "Евро";
+  let inviteLink;
 
   it("user logins and create a box", () => {
     cy.visit("/login");
     cy.get(loginPage.loginField).type(users.userAutor.email);
     cy.get(loginPage.passwordField).type(users.userAutor.password);
-    cy.get(loginPage.submitButton).click({ forse: true });
+    cy.get(generalElements.submitButton).click({ forse: true });
 
     cy.contains("Создать коробку").should("exist");
     cy.contains("Создать коробку").click({ force: true });
@@ -52,12 +54,28 @@ describe("user can create a box and run it", () => {
     cy.get(boxPage.currency).select(currency);
     cy.get(generalElements.arrowRight).click();
     cy.get(generalElements.arrowRight).click();
+    cy.get(generalElements.arrowRight).click({ force: true });
     //cy.get(generalElements.arrowRight).click();
     cy.get(dashboardPage.createdBoxName).should("have.text", newBoxName);
     cy.get(".layout-1__header-wrapper-fixed .toggle-menu-item span")
-    .invoke('text')
-    .then((text)=>{
-      expect(text).to.include("УчастникиМоя карточкаПодопечный")
-    })
+      .invoke("text")
+      .then((text) => {
+        expect(text).to.include("УчастникиМоя карточкаПодопечный");
+      });
+  });
+
+  it("add participants", () => {
+    cy.get(generalElements.submitButton).click({ forse: true });
+    cy.get(invitePage.inviteLink)
+      .invoke("text")
+      .then((link) => {
+        inviteLink = link;
+      });
+    cy.clearCookies();
+  });
+  it("approve as user1", () => {
+    cy.visit(inviteLink);
+    cy.get(generalElements.submitButton).click({ forse: true });
+    cy.contains("войдите").click()
   });
 });
