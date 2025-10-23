@@ -1,15 +1,15 @@
-const users = require("../fixtures/users.json")
-const loginPage = require("../fixtures/pages/loginPage.json")
-const boxPage = require("../fixtures/pages/boxPage.json")
-const generalElements = require("../fixtures/pages/jeneral.json")
-import {faker} from "@faker-js/faker"
+const users = require("../fixtures/users.json");
+const loginPage = require("../fixtures/pages/loginPage.json");
+const boxPage = require("../fixtures/pages/boxPage.json");
+const generalElements = require("../fixtures/pages/jeneral.json");
+import { faker } from "@faker-js/faker";
 
-describe('user can create a box and run it', () => {
+describe("user can create a box and run it", () => {
   //const password = "test12345";
   //const email = "marinagubina37+1@gmail.com";
   //const userName = "Marina";
 
-  //пользователь 1 логинится 
+  //пользователь 1 логинится
   //пользователь 1 создает коробку
   //пользователь 1 получает приглашение
   //пользователь 2 переходит по приглашению
@@ -21,16 +21,17 @@ describe('user can create a box and run it', () => {
   //пользователь 1 логинится
   //пользователь 1 запускает жеребьевку
 
-  let newBoxName = faker.word.noun({ length: { min: 5, max: 10 }})
+  let newBoxName = faker.word.noun({ length: { min: 5, max: 10 } });
 
-  it('user logins and create a box', () => {
-    cy.visit('/login')
-    cy.get(loginPage.loginField).type(users.userAutor.email)
-    cy.get(loginPage.passwordField).type(users.userAutor.password)
-    cy.get(loginPage.submitButton).click({forse: true})
-    
-    cy.contains("Создать коробку").click({forse: true})
-    cy.get(boxPage.boxNameField).type(newBoxName)
-    cy.get(generalElements.arrowRight).click()
-  })
-})
+  it("user logins and create a box", () => {
+    cy.visit("/login");
+    cy.get(loginPage.loginField).type(users.userAutor.email);
+    cy.get(loginPage.passwordField).type(users.userAutor.password);
+    cy.get(loginPage.submitButton).click({ forse: true });
+
+    cy.contains("Создать коробку").should("exist");
+    cy.contains("Создать коробку").click({ force: true });
+    cy.get(boxPage.boxNameField).type(newBoxName);
+    cy.get(generalElements.arrowRight).click();
+  });
+});
