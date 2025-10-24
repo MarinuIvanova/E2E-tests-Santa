@@ -37,9 +37,9 @@ describe("user can create a box and run it", () => {
   it("user logins and create a box", () => {
     cy.visit("/login");
     cy.login(users.userAutor.email, users.userAutor.password);
-
-    cy.contains("Создать коробку").should("exist");
-    cy.contains("Создать коробку").click({ force: true });
+    //cy.contains("Создать коробку").should("exist");
+    //cy.contains("Создать коробку").click({ force: true });
+    cy.get(".toggle-menu-wrapper > a").click();
     cy.get(boxPage.boxNameField).type(newBoxName);
     cy.get(":nth-child(3) > .frm")
       .invoke("val")
@@ -92,5 +92,22 @@ describe("user can create a box and run it", () => {
       .then((text) => {
         expect(text).to.contains("Это — анонимный чат с вашим Тайным Сантой");
       });
+    cy.clearCookies();
   });
+
+  after("delete box", () => {
+    cy.visit("/login");
+    cy.login(users.userAutor.email, users.userAutor.password);
+    cy.get(":nth-child(1) > a.base--clickable > .user-card").click({ forse: true })
+    cy.get('.layout-1__header-wrapper-fixed > .layout-1__header-secondary > .header-secondary > .header-secondary__right-item > .toggle-menu-wrapper > .toggle-menu-button').click()
+    cy.get('.layout-1__header-wrapper-fixed > .layout-1__header-secondary__menu > .header-secondary-menu > .organizer-menu > .organizer-menu__wrapper > :nth-child(5)').click()
+    cy.get(':nth-child(2) > .form-page-group__main > .frm-wrapper > .frm').type("Удалить коробку")
+    cy.get(".btn-service").click()
+  });
+
+  /*it("delete API", ()=>{
+
+  })*/
+
+  
 });
