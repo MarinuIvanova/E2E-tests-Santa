@@ -9,6 +9,7 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: "https://santa-secret.ru/",
     testIsolation: false,
+    specPattern: '**/*.feature',
     setupNodeEvents(on, config) {
       // implement node event listeners here
       const bundler = createBundler({
@@ -18,5 +19,6 @@ module.exports = defineConfig({
       addCucumberPreprocessorPlugin(on, config);
       return config;
     },
+    
   },
 });
