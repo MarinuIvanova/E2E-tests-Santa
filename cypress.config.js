@@ -6,6 +6,7 @@ const addCucumberPreprocessorPlugin =
   require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
 
 module.exports = defineConfig({
+  projectId: "rwebcm",
   e2e: {
     baseUrl: "https://santa-secret.ru/",
     testIsolation: false,

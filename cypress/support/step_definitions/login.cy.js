@@ -16,7 +16,7 @@ Given("user is on santa login page", function () {
   cy.visit("/login");
 });
 
-/*When("user logs in as {string} and {string}", function (string, string2) {
+When("user logs in as {string} and {string}", function (string, string2) {
   cy.login(string, string2);
 });
 
@@ -26,7 +26,7 @@ When("user logs in", function () {
 
 When("user logs in with table", function (dataTable) {
   cy.login(dataTable.hashes()[0].login, dataTable.hashes()[0].password)
-});*/
+});
 
 When("user logs in as {string} and {string}", function (login, password) {
   cy.login(login, password);

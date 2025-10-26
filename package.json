@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:run": "cypress run",
+    "cy:run:cloud": "cypress run --record --key 0804ba59-eb25-4117-8869-ef00b1e41109",
+    "cy:run:login": "cypress run --spec 'cypress/e2e/test/login.feature' --record --key 0804ba59-eb25-4117-8869-ef00b1e41109",
+    "cy:run:login_copy": "cypress run --spec 'cypress/e2e/test/login_copy.feature' --record --key 0804ba59-eb25-4117-8869-ef00b1e41109",
+    "cy:run:nokey:login": "cypress run --spec 'cypress/e2e/test/login.feature'",
+    "cy:run:nokey:login_copy": "cypress run --spec 'cypress/e2e/test/login_copy.feature'"
+
   },
   "repository": {
     "type": "git",
