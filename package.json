@@ -9,8 +9,12 @@
     "cy:run:login": "cypress run --spec 'cypress/e2e/test/login.feature' --record --key 0804ba59-eb25-4117-8869-ef00b1e41109",
     "cy:run:login_copy": "cypress run --spec 'cypress/e2e/test/login_copy.feature' --record --key 0804ba59-eb25-4117-8869-ef00b1e41109",
     "cy:run:nokey:login": "cypress run --spec 'cypress/e2e/test/login.feature'",
-    "cy:run:nokey:login_copy": "cypress run --spec 'cypress/e2e/test/login_copy.feature'"
-
+    "cy:run:nokey:login_copy": "cypress run --spec 'cypress/e2e/test/login_copy.feature'",
+    "cy:nokey:parallel": "npm run cy:run:nokey:login -- --browser chrome && npm run cy:run:nokey:login_copy -- --browser electron",
+    "cy:parallel": "npm run cy:run:login -- --browser chrome --group chrome --ci-build-id 3 --parallel && npm run cy:run:login_copy -- --browser electron --group electron --ci-build-id 3 --parallel",
+    "cy:login:dash": "npx cypress run --spec 'cypress/e2e/test/login.feature' --browser chrome --record --key 0804ba59-eb25-4117-8869-ef00b1e41109",
+    "cy:login_copy:dash": "npx cypress run --spec 'cypress/e2e/test/login_copy.feature' --browser electron --record --key 0804ba59-eb25-4117-8869-ef00b1e41109",
+    "cy:start:parallel": "concurrently 'npm run cy:login:dash' 'npm run cy:login_copy:dash'"
   },
   "repository": {
     "type": "git",
@@ -25,6 +29,7 @@
   "devDependencies": {
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.6",
     "@faker-js/faker": "^10.1.0",
+    "concurrently": "^9.2.1",
     "cypress": "^12.17.4",
     "esbuild": "^0.25.11"
   },
