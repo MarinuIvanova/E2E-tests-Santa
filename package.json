@@ -14,7 +14,8 @@
     "cy:parallel": "npm run cy:run:login -- --browser chrome --group chrome --ci-build-id 3 --parallel && npm run cy:run:login_copy -- --browser electron --group electron --ci-build-id 3 --parallel",
     "cy:login:dash": "npx cypress run --spec 'cypress/e2e/test/login.feature' --browser chrome --record --key 0804ba59-eb25-4117-8869-ef00b1e41109",
     "cy:login_copy:dash": "npx cypress run --spec 'cypress/e2e/test/login_copy.feature' --browser electron --record --key 0804ba59-eb25-4117-8869-ef00b1e41109",
-    "cy:start:parallel": "concurrently 'npm run cy:login:dash' 'npm run cy:login_copy:dash'"
+    "cy:start:parallel": "concurrently 'npm run cy:login:dash' 'npm run cy:login_copy:dash'",
+    "allure_report": "npx allure generate allure-results && npx allure open allure-report"
   },
   "repository": {
     "type": "git",
