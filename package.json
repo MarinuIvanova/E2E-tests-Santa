@@ -18,6 +18,6 @@
   "homepage": "https://github.com/MarinuIvanova/E2E-tests-Santa#readme",
   "devDependencies": {
     "@faker-js/faker": "^10.1.0",
-    "cypress": "^12.2.0"
+    "cypress": "^15.5.0"
   }
 }
