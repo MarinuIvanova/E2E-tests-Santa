@@ -37,3 +37,4 @@ Cypress.Commands.add("login", (userName, password) => {
   cy.get(loginPage.passwordField).type(password);
   cy.get(generalElements.submitButton).click({ forse: true });
 });
+//comment
